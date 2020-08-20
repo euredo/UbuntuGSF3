@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Sistema de Ingreso de Expedientes
+Terminal=false
+Name=SIE
+Exec=pw3270
+Type=Application
+Icon=/usr/local/bin/gsf/icons/icono-SIE.tiff

@@ -1,0 +1,5 @@
+#!/bin/bash
+NFRPD="  conf_SNA"
+NL="source \/usr\/local\/bin\/gsf\/scripts\/lib_sna.sh"
+sed -i "s/$NL/ /" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
+sed -i "s/$NFRPD/ /" /usr/local/bin/gsf/scripts/configuracion-inicial.sh

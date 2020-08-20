@@ -1,0 +1,12 @@
+Package: gsf-sna
+Version: 1.0
+Installed-Size: 96
+Maintainer: STG <gfiguredo@santafe.gov.ar>
+Section: admin
+Architecture: amd64
+Priority: important
+Depends: gsf (>=1.0), pr3287 (>=3.3.14), pw3270 (>=5.0)
+Description: Acceso a terminales SNA
+ Agrega lanzadores para teminales de SNA (SIE y Terminal de Impresion)
+ Agrega asistente de configuración para terminales SNA.
+

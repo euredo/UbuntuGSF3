@@ -1,0 +1,11 @@
+Package: gsf-sna
+Version: 1.1
+Maintainer: STG <gfiguredo@santafe.gov.ar>
+Architecture: all
+Priority: optional
+Depends: pr3287 (>=3.3.14)
+Recommends: gsf (>=1.0)
+Description: Instala y configura accesos SNA
+ Instala PW3270
+ Agrega lanzadores para teminales de SNA (SIE y Terminal de Impresion)
+ Agrega asistente de configuración para terminales SNA.

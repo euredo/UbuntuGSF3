@@ -1,0 +1,7 @@
+eb9f027330d5849dc288e5a5647c270e  etc/xdg/menus/applications-merged/sna.menu
+77f5e47e59017e90a02bda013366e963  usr/local/bin/gsf/scripts/configurar_sna.sh
+d68d8d8ccffd7a20bdece10e2991ac53  usr/local/bin/gsf/scripts/manejar_pr3287.sh
+d120f40fd650a2f1b97e786303ea86ff  usr/local/bin/gsf/scripts/lib_sna.sh
+f4686c80c8667a03669dd32afdcf135c  usr/share/mate/applications/sie.desktop
+3a233e688f7689d088f580ca657cef90  usr/share/mate/applications/conf_pr3287.desktop
+36450aa2631c4aa770fe4811e6e8e11f  usr/share/mate/applications/pr3287.desktop

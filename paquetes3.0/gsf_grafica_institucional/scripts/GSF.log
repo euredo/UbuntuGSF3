@@ -1,0 +1,10 @@
+mar jun 30 12:53:21 -03 2020 SeteoFondoPantalla.sh reemplaza fondo de pantalla por defecto para el sistema 
+ Archivo Modificado=/usr/share/glib-2.0/schemas/20_mate-ubuntu.gschema.override 
+ Walpaper_Original=/home/administrador/Escritorio/wallpapers/wallpaperGSF-1920x1080.png 
+ Walpaper_Nuevo=/usr/share/backgrounds/gsf/wallpaperGSF-1920x1080.png
+ /n Esquemas Compilados
+mar jun 30 13:22:54 -03 2020 SeteoFondoPantalla.sh reemplaza fondo de pantalla por defecto para el sistema 
+ Archivo Modificado=/usr/share/glib-2.0/schemas/20_mate-ubuntu.gschema.override 
+ Walpaper_Original=/usr/share/backgrounds/gsf/wallpaperGSF-1920x1080.png 
+ Walpaper_Nuevo=/usr/share/backgrounds/gsf/wallpaperGSF-1920x1080.png
+ /n Esquemas Compilados
