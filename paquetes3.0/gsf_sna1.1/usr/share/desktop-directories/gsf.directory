@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Directory
+Icon[es_AR]=/usr/local/bin/gsf/icons/SF-Icon.png
+Name[es_AR]=Santa Fe
+Comment[es_AR]=Menú de Aplicaciones Santa Fe
+Name=Santa Fe
+Comment=Menú de Aplicaciones Santa Fe
+

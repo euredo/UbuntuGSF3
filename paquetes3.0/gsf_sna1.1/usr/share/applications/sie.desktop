@@ -1,7 +1,8 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Comment=Sistema de Ingreso de Expedientes
 Terminal=false
 Name=SIE
 Exec=pw3270
 Type=Application
-Icon=/usr/local/bin/gsf/icons/icono-SIE.tiff
+Icon=/usr/local/bin/gsf/icons/icono-SIE.png

@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################
 # Asistente para configurar Terminal de Impresión
-# Modificado: 2018-02
+# Modificado: 2020-08
 ############################################
 
 MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_pr3287.sh"
@@ -34,12 +34,50 @@ function form_sna(){
 	   mostrarYAD "Error" "Como mínimo debe ingresar <b>Servidor SNA</b>. Ingrese los datos nuevamente" "gtk-ok" 
 	 else
 	  FORMLU=1 
-	  REP_CADENA="$REP_CADENA     * Se configuran las conexiones SNA con los siguientes valores:\n          -Unidad Lógica de Video (LU): <b>$LU_VIDEO</b>\n          -Unidad Lógica de Impresión (LU): <b>$LU_PRINTER</b>\n          - Servidor SNA: <b>$IP_SNA</b>"   
+	  REP_CADENA="$REP_CADENA\n     * Se configuran las conexiones SNA con los siguientes valores:\n          -Unidad Lógica de Video (LU): <b>$LU_VIDEO</b>\n          -Unidad Lógica de Impresión (LU): <b>$LU_PRINTER</b>\n          - Servidor SNA: <b>$IP_SNA</b>"   
       Ejec+=('cambiar_SNA') 
 	fi
 }
+# ************************* cheq_PW3240() chequea que los paquetes del emulador pw3270 esten instalados ***********************************
+function cheq_PW3240(){
+#  Chequeo que los paquetes se encuentren instalados
+if [ echo $(apt -qq list lib3270) >/dev/null 2>&1 ]; then  
+    INST_LIB= true  
+    REP_CADENA="$REP_CADENA     * Se instalaran el/los siguiente/s paquete/s faltante/s:\n          -lib3270_5.1-0_amd64.deb \n"      
+fi
+
+if [ echo $(apt -qq list pw3270) >/dev/null 2>&1 ]; then  
+    INST_PW3270= true 
+    REP_CADENA="$REP_CADENA          -pw3270_5.1-0_amd64.deb \n"   
+fi
+
+if [ echo $(apt -qq list pw3270-plugin-dbus) >/dev/null 2>&1 ]; then 
+    INST_PLUG= true 
+    REP_CADENA="$REP_CADENA          -pw3270-plugin-dbus_5.1-0_amd64.deb \n"   
+fi
+}
+
+
 # ************************* cambiar_SNA() Muestra el reporte de los cambios a realizar ***********************************
 function cambiar_SNA(){
+
+    if [ $INST_LIB -o $INST_PW3270 -o $INST_PLUG ]; then 
+      sudo apt update
+    fi
+
+    if [ $INST_LIB ]; then 
+      sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.1-0_amd64.deb
+    fi
+
+    if [ $INST_PW3270 ]; then  
+         
+      sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.1-0_amd64.deb
+    fi
+
+    if [ $INST_PLUG ]; then
+    
+     sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-plugin-dbus_5.1-0_amd64.deb
+    fi
 	if [ -z $LU_VIDEO ]; 
 	 then
 		reemplazar Exec "pw3270 -h $IP_SNA -s $LU_VIDEO" $LANZADORPW3270 

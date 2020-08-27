@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Directory
+Icon[es_AR]=/usr/local/bin/gsf/icons/Icono-servicio-tecnico.tif
+Name[es_AR]=Herramientas de Soporte Técnico
+Name=Herramientas de Soporte Técnico
+Icon=/usr/local/bin/gsf/icons/SF-Icon.png

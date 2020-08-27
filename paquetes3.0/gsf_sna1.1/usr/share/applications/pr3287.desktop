@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Comment=Sistema de Ingreso de Expedientes
 Terminal=false

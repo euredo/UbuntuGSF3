@@ -1,0 +1,69 @@
+[DEBREATE-0.7.13]
+<<CTRL>>
+Package: GSF-sna
+Version: 1.1
+Maintainer: Germán Figueredo <gfigueredo@santafe.gov.ar>
+Architecture: amd64
+Priority: optional
+Depends: yad (>=0.38), libatk1.0-0 (>=1.12.4), libc6 (>=2.3), libcairo-gobject2 (>=1.10.0), libcairo2 (>=1.7.2), libgdk-pixbuf2.0-0  (>=2.22.0), libglib2.0-0 (>=2.37.3), libgtk-3-0  (>=3.11.5), libpango-1.0-0 (>=1.14.0), libpangocairo-1.0-0 (>=1.14.0), libssl1.0.0 (>=1.0.0), gdebi (>=0.9.5), policykit-1 (>=0.105)
+Description: Aporta Instaladores, lanzadores y configuracion de accesos SNA
+ Agrega lanzadores para teminales de SNA (SIE y Terminal de Impresion)
+ Agrega asistente de configuración para terminales SNA.
+
+<</CTRL>>
+<<FILES>>
+1
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/etc/xdg/menus/applications-merged/sna.menu -> sna.menu -> /etc/xdg/menus/applications-merged
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/debs -> debs -> /usr/local/bin/gsf/
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/icons -> icons -> /usr/local/bin/gsf/
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/scripts -> scripts -> /usr/local/bin/gsf/
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/applications -> applications -> /usr/share
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/desktop-directories -> desktop-directories -> /usr/share
+<</FILES>>
+<<SCRIPTS>>
+<<PREINST>>
+0
+<</PREINST>>
+<<POSTINST>>
+1
+#!/bin/bash
+if [ -f /usr/local/bin/gsf/scripts/configuracion-inicial.sh ];
+then
+  NFRPD="  conf_SNA"
+  NL="source \/usr\/local\/bin\/gsf\/scripts\/lib_sna.sh"
+  sed -i "s/\#NL/$NL\n\#NL/" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
+  sed -i "s/\#NFRPD/$NFRPD\n\#NFRPD/" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
+fi
+<</POSTINST>>
+<<PRERM>>
+0
+<</PRERM>>
+<<POSTRM>>
+1
+#!/bin/bash
+if [ -f /usr/local/bin/gsf/scripts/configuracion-inicial.sh ];
+then
+  NFRPD="  conf_SNA"
+  NL="source \/usr\/local\/bin\/gsf\/scripts\/lib_sna.sh"
+  sed -i "s/$NL/ /" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
+  sed -i "s/$NFRPD/ /" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
+fi
+sudo apt  -y purge pw3270 lib3270 pw3270-plugin-dbus
+<</POSTRM>>
+<</SCRIPTS>>
+<<CHANGELOG>>
+<<DEST>>DEFAULT<</DEST>>
+
+<</CHANGELOG>>
+<<COPYRIGHT>>
+
+<</COPYRIGHT>>
+<<MENU>>
+0
+<</MENU>>
+<<BUILD>>
+1
+1
+1
+strip
+<</BUILD>>

@@ -1,0 +1,74 @@
+E: GSF-sna: changelog-file-missing-in-native-package
+E: GSF-sna: file-in-etc-not-marked-as-conffile etc/xdg/menus/applications-merged/sna.menu
+E: GSF-sna: no-copyright-file
+E: GSF-sna: bad-package-name
+E: GSF-sna: package-not-lowercase
+W: GSF-sna: no-section-field
+W: GSF-sna: non-standard-dir-perm etc/ 0775 != 0755
+W: GSF-sna: non-standard-dir-perm etc/xdg/ 0775 != 0755
+W: GSF-sna: non-standard-dir-perm etc/xdg/menus/ 0775 != 0755
+W: GSF-sna: non-standard-dir-perm etc/xdg/menus/applications-merged/ 0775 != 0755
+W: GSF-sna: non-standard-dir-perm usr/ 0775 != 0755
+W: GSF-sna: non-standard-dir-perm usr/local/ 0775 != 0755
+E: GSF-sna: dir-in-usr-local usr/local/bin/
+W: GSF-sna: non-standard-dir-perm usr/local/bin/ 0775 != 0755
+E: GSF-sna: dir-in-usr-local usr/local/bin/gsf/
+W: GSF-sna: non-standard-dir-perm usr/local/bin/gsf/ 0775 != 0755
+E: GSF-sna: dir-in-usr-local usr/local/bin/gsf/debs/
+E: GSF-sna: dir-in-usr-local usr/local/bin/gsf/debs/pw3270/
+W: GSF-sna: non-standard-dir-perm usr/local/bin/gsf/debs/pw3270/ 0775 != 0755
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/debs/pw3270/Readme.txt
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/debs/pw3270/Readme.txt
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/debs/pw3270/Readme.txt 0600 != 0644
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/debs/pw3270/lib3270_5.1-0_amd64.deb
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/debs/pw3270/lib3270_5.1-0_amd64.deb
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/debs/pw3270/lib3270_5.1-0_amd64.deb 0600 != 0644
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/debs/pw3270/pw3270-plugin-dbus_5.1-0_amd64.deb
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/debs/pw3270/pw3270-plugin-dbus_5.1-0_amd64.deb
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/debs/pw3270/pw3270-plugin-dbus_5.1-0_amd64.deb 0600 != 0644
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/debs/pw3270/pw3270_5.1-0_amd64.deb
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/debs/pw3270/pw3270_5.1-0_amd64.deb
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/debs/pw3270/pw3270_5.1-0_amd64.deb 0600 != 0644
+E: GSF-sna: dir-in-usr-local usr/local/bin/gsf/icons/
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/icons/.gitkeep
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/icons/.gitkeep
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/icons/.gitkeep 0600 != 0644
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/icons/SF-Icon.png
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/icons/SF-Icon.png
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/icons/SF-Icon.png 0600 != 0644
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/icons/icono-Config-SIE.png
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/icons/icono-Config-SIE.png
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/icons/icono-Config-SIE.png 0664 != 0644
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/icons/icono-SIE.png
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/icons/icono-SIE.png
+W: GSF-sna: non-standard-file-perm usr/local/bin/gsf/icons/icono-SIE.png 0664 != 0644
+E: GSF-sna: dir-in-usr-local usr/local/bin/gsf/scripts/
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/scripts/configurar_sna.sh
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/configurar_sna.sh
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/scripts/lib_sna.sh
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/lib_sna.sh
+E: GSF-sna: file-in-usr-local usr/local/bin/gsf/scripts/manejar_pr3287.sh
+W: GSF-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/manejar_pr3287.sh
+W: GSF-sna: non-standard-dir-perm usr/share/ 0775 != 0755
+W: GSF-sna: non-standard-file-perm usr/share/desktop-directories/gsf-tools.directory 0600 != 0644
+W: GSF-sna: non-standard-file-perm usr/share/desktop-directories/gsf.directory 0600 != 0644
+E: GSF-sna: md5sums-lists-nonexistent-file usr/share/desktop-directories/gsf-tools.director
+W: GSF-sna: file-missing-in-md5sums usr/share/desktop-directories/gsf-tools.directory
+E: GSF-sna: executable-desktop-file usr/share/applications/conf_pr3287.desktop 0755
+E: GSF-sna: executable-desktop-file usr/share/applications/pr3287.desktop 0755
+E: GSF-sna: executable-desktop-file usr/share/applications/sie.desktop 0755
+W: GSF-sna: desktop-command-not-in-package usr/share/applications/conf_pr3287.desktop pkexec
+W: GSF-sna: desktop-command-not-in-package usr/share/applications/pr3287.desktop bash
+W: GSF-sna: desktop-command-not-in-package usr/share/applications/sie.desktop pw3270
+W: GSF-sna: script-not-executable usr/local/bin/gsf/scripts/configurar_sna.sh
+W: GSF-sna: script-not-executable usr/local/bin/gsf/scripts/lib_sna.sh
+W: GSF-sna: script-not-executable usr/local/bin/gsf/scripts/manejar_pr3287.sh
+W: GSF-sna: unusual-interpreter usr/share/applications/conf_pr3287.desktop #!xdg-open
+W: GSF-sna: unusual-interpreter usr/share/applications/pr3287.desktop #!xdg-open
+W: GSF-sna: unusual-interpreter usr/share/applications/sie.desktop #!xdg-open
+W: GSF-sna: script-not-executable usr/share/desktop-directories/gsf-tools.directory
+W: GSF-sna: unusual-interpreter usr/share/desktop-directories/gsf-tools.directory #!xdg-open
+W: GSF-sna: script-not-executable usr/share/desktop-directories/gsf.directory
+W: GSF-sna: unusual-interpreter usr/share/desktop-directories/gsf.directory #!xdg-open
+W: GSF-sna: maintainer-script-ignores-errors postinst
+W: GSF-sna: maintainer-script-ignores-errors postrm

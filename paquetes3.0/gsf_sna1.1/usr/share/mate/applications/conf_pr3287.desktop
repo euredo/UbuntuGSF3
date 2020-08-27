@@ -1,8 +1,0 @@
-[Desktop Entry]
-Comment=Configuración de parámetros de conexiones SNA (SIE y Terminal de Impresión)
-Terminal=false
-Name=Configuración SNA
-Exec=gksu -w -u administrador "gksu bash /usr/local/bin/gsf/scripts/configurar_sna.sh"
-Type=Application
-Icon=applications-system
-

@@ -1,17 +1,18 @@
 #!/bin/bash
 ############################################
-# Asistente para configurar Terminal de Impresión
-# Modificado: 2019-02
+# Asistente para configurar Terminales SNA 
+# de video y de Impresión
+# Modificado: 2020-08
 ############################################
 
 
-source /home/administrador/Escritorio/scripts/lib_sna.sh 
-#source /usr/local/bin/gsf/scripts/lib_sna.sh 
+source /usr/local/bin/gsf/scripts/lib_sna.sh 
 VERSION="Ver. 1.0"
 TITULO_SCRIPT="Configuración SNA"
 ICONO="/usr/local/bin/gsf/icons/SF-Icon.png"
-
-
+INST_LIB=false
+INST_PW3270=false
+INST_PLUG=false
 
 # ************************* mostrarYAD() Muestra el Formulario estandar con mensajes al usuario ***********************************
 function mostrarYAD(){ 
@@ -58,27 +59,16 @@ function form_Reporte(){
 	--button="gtk-ok:0" --button="gtk-cancel:1"
 	validar_form
 }
+
+
+
 # ************************* main() **************************************
 checkear_root
 
 clear
-echo "chequeo de archivos"
-if [ echo $(dpkg -l | grep -i  lib3270) >/dev/null 2>&1 ]; then  
-    echo "instalar librerias"    
-    sudo dpkg -i /usr/local/bin/gsf/debs/pw3270/lib3270_5.1-0_amd64.deb
-fi
 
-if [ echo $(apt -qq list pw3270) >/dev/null 2>&1 ]; then    
-    echo "instalar Pw3270"     
-    sudo dpkg -i /usr/local/bin/gsf/debs/pw3270/pw3270_5.1-0_amd64.deb
-fi
+cheq_PW3240
 
-if [ echo $(apt -qq list pw3270-plugin-dbus) >/dev/null 2>&1 ]; then   
-    echo "instalar Plugin"    
-    sudo dpkg -i /usr/local/bin/gsf/debs/pw3270/pw3270-plugin-dbus_5.1-0_amd64.deb
-fi
-echo "sleep 20"
-sleep 20s
 conf_SNA
 
 form_Reporte
