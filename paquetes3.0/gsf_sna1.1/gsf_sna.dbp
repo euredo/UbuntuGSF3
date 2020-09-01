@@ -1,6 +1,6 @@
 [DEBREATE-0.7.13]
 <<CTRL>>
-Package: GSF-sna
+Package: gsf-sna
 Version: 1.1
 Maintainer: Germán Figueredo <gfigueredo@santafe.gov.ar>
 Architecture: amd64
@@ -14,11 +14,8 @@ Description: Aporta Instaladores, lanzadores y configuracion de accesos SNA
 <<FILES>>
 1
 /home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/etc/xdg/menus/applications-merged/sna.menu -> sna.menu -> /etc/xdg/menus/applications-merged
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/debs -> debs -> /usr/local/bin/gsf/
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/icons -> icons -> /usr/local/bin/gsf/
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/scripts -> scripts -> /usr/local/bin/gsf/
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/applications -> applications -> /usr/share
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/desktop-directories -> desktop-directories -> /usr/share
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local -> local -> /usr/
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share -> share -> /usr/
 <</FILES>>
 <<SCRIPTS>>
 <<PREINST>>
@@ -34,6 +31,7 @@ then
   sed -i "s/\#NL/$NL\n\#NL/" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
   sed -i "s/\#NFRPD/$NFRPD\n\#NFRPD/" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
 fi
+alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY' 
 <</POSTINST>>
 <<PRERM>>
 0
@@ -48,7 +46,7 @@ then
   sed -i "s/$NL/ /" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
   sed -i "s/$NFRPD/ /" /usr/local/bin/gsf/scripts/configuracion-inicial.sh
 fi
-sudo apt  -y purge pw3270 lib3270 pw3270-plugin-dbus
+
 <</POSTRM>>
 <</SCRIPTS>>
 <<CHANGELOG>>
