@@ -1,4 +1,5 @@
 #!/usr/bin/env xdg-open
+
 [Desktop Entry]
 Comment=Configuración de parámetros de conexiones SNA (SIE y Terminal de Impresión)
 Terminal=false
