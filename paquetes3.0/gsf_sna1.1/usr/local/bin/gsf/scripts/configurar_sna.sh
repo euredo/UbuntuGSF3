@@ -10,9 +10,7 @@ source /usr/local/bin/gsf/scripts/lib_sna.sh
 VERSION="Ver. 1.0"
 TITULO_SCRIPT="Configuración SNA"
 ICONO="/usr/local/bin/gsf/icons/SF-Icon.png"
-INST_LIB=false
-INST_PW3270=false
-INST_PLUG=false
+
 
 # ************************* mostrarYAD() Muestra el Formulario estandar con mensajes al usuario ***********************************
 function mostrarYAD(){ 

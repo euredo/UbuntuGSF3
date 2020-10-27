@@ -4,11 +4,12 @@
 # Modificado: 2020-08
 ############################################
 
+INST_PW3270="false"
 ARCH3270="/usr/local/bin/gsf/config/SIE.3270"
 MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_pr3287.sh"
 LANZADORPW3270="/usr/share/applications/sie.desktop"
 CONFSNA="/usr/local/bin/gsf/scripts/lib_sna.sh"
-LU_VIDEO_ORI="rotpnt01"
+LU_VIDEO_ORI="XXXXXXXX"
 LU_PRINTER_ORI="XXXXXXXX"
 IP_SNA_ORI="10.1.4.11"
 FORMLU=0
@@ -41,40 +42,20 @@ function form_sna(){
 }
 # ************************* cheq_PW3240() chequea que los paquetes del emulador pw3270 esten instalados ***********************************
 function cheq_PW3240(){
-#  Chequeo que los paquetes se encuentren instalados
-INST_LIB=false
-INST_LIBV=false
-INST_PW3270=false
-INST_KEYPAD=false
-REP_CADENA_Inst=""
 
-# si lib3270 NO está instalado pongo la bandera INST_LIB en true y agrego texto para confirmación de cambios
-if [ echo $(dpkg --get-selections |grep "lib3270") >/dev/null ]; then  
-    INST_LIB=true  
     REP_CADENA_Inst="$REP_CADENA_Inst          -lib3270_5.3+git20201024-0+39.1_amd64.deb \n"      
-fi
 
-# si libv3270 NO está instalado pongo la bandera INST_LIBV en true y agrego texto para confirmación de cambios
-if [ echo $(dpkg --get-selections |grep "libv3270") >/dev/null ]; then  
-    INST_LIBV=true  
     REP_CADENA_Inst="$REP_CADENA_Inst          -libv3270_5.3+git20200915-0+311.2_amd64.deb \n"      
-fi
 
-# si pw3270 NO está instalado pongo la bandera INST_PW3270 en true y agrego texto para confirmación de cambios
-if [ echo $(dpkg --get-selections |grep "pw3270") >/dev/null 2>&1 ]; then  
-
-    INST_PW3270=true 
     REP_CADENA_Inst="$REP_CADENA_Inst          -pw3270_5.3+git20200820-0+40.4_amd64.deb \n"   
-fi
 
-# si pw3270-keypads NO está instalado pongo la bandera INST_KEYPAD en true y agrego texto para confirmación de instalaciones
-if [ echo $(dpkg --get-selections |grep "pw3270-keypads") >/dev/null 2>&1 ]; then 
-    INST_KEYPAD=true 
     REP_CADENA_Inst="$REP_CADENA_Inst          -pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb \n"   
-fi
 
 # si falta algun paquete se agrega la cadena de confirmacion de instalaciones a la cadena de confirmacion de cambios
-if [ [ $INST_LIB ] -o [ $INST_LIBV ] -o [ $INST_PW3270 ] -o [ $INST_KEYPAD ] ]; then  
+echo "INST_PW3270: $INST_PW3270"
+INST=$INST_PW3270
+echo "inst: "$INST
+if [[ $INST = "true" ]]; then
    REP_CADENA="$REP_CADENA     * Se instalaran el/los siguiente/s paquete/s faltante/s:\n$REP_CADENA_Inst        <b>La instalación de dichos paquetes se hace una sola vez y puede demorar unos minutos. SEA PACIENTE</b>\n"
 fi
 }
@@ -90,24 +71,22 @@ function reemplazar(){
 # ************************* cambiar_SNA() Realiza los cambios ya confirmados ***********************************
 function cambiar_SNA(){
 # si falta algun paquete actualiza los repositorios e instala los paquetes faltantes
-    if [ [ $INST_LIB ] -o [ $INST_LIBV ] -o [ $INST_PW3270 ] -o [ $INST_KEYPAD ] ]; then 
+    if [[ $INST = "true" ]];then
       sudo apt update   
-      if [ $INST_LIB ]; then   
+      
         echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb"
         sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb
-      fi 
-      if [ $INST_LIBV ]; then   
+        
         echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb"
         sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb
-      fi
-      if [ $INST_PW3270 ]; then  
+      
         echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb"
         sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb
-      fi
-      if [ $INST_KEYPAD ]; then
+      
        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb"  
        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb
-      fi
+       
+      
     fi
     
   # Reemplaza las variables en los archivos de configuración.  
@@ -129,6 +108,8 @@ function cambiar_SNA(){
 	reemplazar url "tn3270://$IP_SNA:telnet" $ARCH3270 
 	
 	reemplazar Exec "pw3270 $ARCH3270 " $LANZADORPW3270
+	
+	reemplazar INST_PW3270 "\"false\""  $CONFSNA 
 	
 	reemplazar LU_VIDEO_ORI "\"$LU_VIDEO\"" $CONFSNA 
 	
