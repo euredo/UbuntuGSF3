@@ -3,6 +3,6 @@
 Comment=Sistema de Ingreso de Expedientes
 Terminal=false
 Name=SIE
-Exec=pw3270
+Exec=pw3270 /usr/local/bin/gsf/config/SIE.3270
 Type=Application
 Icon=/usr/local/bin/gsf/icons/icono-SIE.png

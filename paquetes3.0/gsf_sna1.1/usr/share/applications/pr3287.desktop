@@ -6,4 +6,3 @@ Name=SIE-Terminal de Impresión
 Exec=bash /usr/local/bin/gsf/scripts/manejar_pr3287.sh 
 Type=Application
 Icon=printer
-

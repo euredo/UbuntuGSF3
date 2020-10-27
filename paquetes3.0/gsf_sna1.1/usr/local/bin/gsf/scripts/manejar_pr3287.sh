@@ -9,7 +9,7 @@ VERSION="Ver. 1.0"
 TITULO_SCRIPT="Terminal de impresion pr3287"
 ICONO="/usr/local/bin/gsf/icons/SF-Icon.png"
 
-LU_PRINTER="ROTPNT04"
+LU_PRINTER="XXXXXXXX"
 IP_SNA="10.1.4.11"
 
 

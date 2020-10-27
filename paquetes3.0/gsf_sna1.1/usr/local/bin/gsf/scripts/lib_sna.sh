@@ -4,10 +4,11 @@
 # Modificado: 2020-08
 ############################################
 
+ARCH3270="/usr/local/bin/gsf/config/SIE.3270"
 MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_pr3287.sh"
-LANZADORPW3270="/usr/share/mate/applications/sie.desktop"
+LANZADORPW3270="/usr/share/applications/sie.desktop"
 CONFSNA="/usr/local/bin/gsf/scripts/lib_sna.sh"
-LU_VIDEO_ORI="XXXXXXXX"
+LU_VIDEO_ORI="rotpnt01"
 LU_PRINTER_ORI="XXXXXXXX"
 IP_SNA_ORI="10.1.4.11"
 FORMLU=0
@@ -41,57 +42,107 @@ function form_sna(){
 # ************************* cheq_PW3240() chequea que los paquetes del emulador pw3270 esten instalados ***********************************
 function cheq_PW3240(){
 #  Chequeo que los paquetes se encuentren instalados
-if [ echo $(apt -qq list lib3270) >/dev/null 2>&1 ]; then  
-    INST_LIB= true  
-    REP_CADENA="$REP_CADENA     * Se instalaran el/los siguiente/s paquete/s faltante/s:\n          -lib3270_5.1-0_amd64.deb \n"      
+INST_LIB=false
+INST_LIBV=false
+INST_PW3270=false
+INST_KEYPAD=false
+REP_CADENA_Inst=""
+
+# si lib3270 NO está instalado pongo la bandera INST_LIB en true y agrego texto para confirmación de cambios
+if [ echo $(dpkg --get-selections |grep "lib3270") >/dev/null ]; then  
+    INST_LIB=true  
+    REP_CADENA_Inst="$REP_CADENA_Inst          -lib3270_5.3+git20201024-0+39.1_amd64.deb \n"      
 fi
 
-if [ echo $(apt -qq list pw3270) >/dev/null 2>&1 ]; then  
-    INST_PW3270= true 
-    REP_CADENA="$REP_CADENA          -pw3270_5.1-0_amd64.deb \n"   
+# si libv3270 NO está instalado pongo la bandera INST_LIBV en true y agrego texto para confirmación de cambios
+if [ echo $(dpkg --get-selections |grep "libv3270") >/dev/null ]; then  
+    INST_LIBV=true  
+    REP_CADENA_Inst="$REP_CADENA_Inst          -libv3270_5.3+git20200915-0+311.2_amd64.deb \n"      
 fi
 
-if [ echo $(apt -qq list pw3270-plugin-dbus) >/dev/null 2>&1 ]; then 
-    INST_PLUG= true 
-    REP_CADENA="$REP_CADENA          -pw3270-plugin-dbus_5.1-0_amd64.deb \n"   
+# si pw3270 NO está instalado pongo la bandera INST_PW3270 en true y agrego texto para confirmación de cambios
+if [ echo $(dpkg --get-selections |grep "pw3270") >/dev/null 2>&1 ]; then  
+
+    INST_PW3270=true 
+    REP_CADENA_Inst="$REP_CADENA_Inst          -pw3270_5.3+git20200820-0+40.4_amd64.deb \n"   
+fi
+
+# si pw3270-keypads NO está instalado pongo la bandera INST_KEYPAD en true y agrego texto para confirmación de instalaciones
+if [ echo $(dpkg --get-selections |grep "pw3270-keypads") >/dev/null 2>&1 ]; then 
+    INST_KEYPAD=true 
+    REP_CADENA_Inst="$REP_CADENA_Inst          -pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb \n"   
+fi
+
+# si falta algun paquete se agrega la cadena de confirmacion de instalaciones a la cadena de confirmacion de cambios
+if [ [ $INST_LIB ] -o [ $INST_LIBV ] -o [ $INST_PW3270 ] -o [ $INST_KEYPAD ] ]; then  
+   REP_CADENA="$REP_CADENA     * Se instalaran el/los siguiente/s paquete/s faltante/s:\n$REP_CADENA_Inst        <b>La instalación de dichos paquetes se hace una sola vez y puede demorar unos minutos. SEA PACIENTE</b>\n"
 fi
 }
 
+# ************************* reemplazar claves en archivos - reemplazar $clave $valor $archivo ************
+function reemplazar(){
+    echo "Reemplaza el parametro $1 en el archivo $3"
+	sed -i "s/\($1 *= *\).*/\1$2/" $3
+}
 
-# ************************* cambiar_SNA() Muestra el reporte de los cambios a realizar ***********************************
+
+
+# ************************* cambiar_SNA() Realiza los cambios ya confirmados ***********************************
 function cambiar_SNA(){
-
-    if [ $INST_LIB -o $INST_PW3270 -o $INST_PLUG ]; then 
-      sudo apt update
+# si falta algun paquete actualiza los repositorios e instala los paquetes faltantes
+    if [ [ $INST_LIB ] -o [ $INST_LIBV ] -o [ $INST_PW3270 ] -o [ $INST_KEYPAD ] ]; then 
+      sudo apt update   
+      if [ $INST_LIB ]; then   
+        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb"
+        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb
+      fi 
+      if [ $INST_LIBV ]; then   
+        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb"
+        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb
+      fi
+      if [ $INST_PW3270 ]; then  
+        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb"
+        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb
+      fi
+      if [ $INST_KEYPAD ]; then
+       echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb"  
+       sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb
+      fi
     fi
-
-    if [ $INST_LIB ]; then 
-      sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.1-0_amd64.deb
-    fi
-
-    if [ $INST_PW3270 ]; then  
-         
-      sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.1-0_amd64.deb
-    fi
-
-    if [ $INST_PLUG ]; then
     
-     sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-plugin-dbus_5.1-0_amd64.deb
-    fi
-	if [ -z $LU_VIDEO ]; 
-	 then
-		reemplazar Exec "pw3270 -h $IP_SNA -s $LU_VIDEO" $LANZADORPW3270 
-	 else
-		reemplazar Exec "pw3270 -h $IP_SNA -s $LU_VIDEO" $LANZADORPW3270 
+  # Reemplaza las variables en los archivos de configuración.  
+    if [ [ -z $LU_VIDEO] ];
+    then 
+	    reemplazar lu-names "" $ARCH3270 
+	    LU_VIDEO="XXXXXXXX"
+	else
+	    if [[ $LU_VIDEO = *"XXXX"* ]];
+	    then 
+	      reemplazar lu-names "" $ARCH3270 
+	      LU_VIDEO="XXXXXXXX"
+	    else
+	      reemplazar lu-names "$LU_VIDEO" $ARCH3270 
+	      
+	    fi
 	fi
+	
+	reemplazar url "tn3270://$IP_SNA:telnet" $ARCH3270 
+	
+	reemplazar Exec "pw3270 $ARCH3270 " $LANZADORPW3270
+	
 	reemplazar LU_VIDEO_ORI "\"$LU_VIDEO\"" $CONFSNA 
+	
 	reemplazar LU_PRINTER_ORI "\"$LU_PRINTER\"" $CONFSNA 
+	
 	reemplazar IP_SNA_ORI "\"$IP_SNA\"" $CONFSNA 
+	
 	reemplazar LU_PRINTER "\"$LU_PRINTER\"" $MANEJARPR3287 
+	
 	reemplazar IP_SNA "\"$IP_SNA\"" $MANEJARPR3287 
 }
 # ************************* conf_SNA() Muestra el reporte de los cambios a realizar ***********************************
 function conf_SNA(){
+
   while [ $FORMLU -eq 0 ]
   do
      form_sna

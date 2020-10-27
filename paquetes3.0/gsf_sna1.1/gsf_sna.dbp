@@ -1,11 +1,11 @@
 [DEBREATE-0.7.13]
 <<CTRL>>
 Package: gsf-sna
-Version: 1.1
+Version: 1.1-alfa
 Maintainer: Germán Figueredo <gfigueredo@santafe.gov.ar>
 Architecture: amd64
 Priority: optional
-Depends: yad (>=0.38), libatk1.0-0 (>=1.12.4), libc6 (>=2.3), libcairo-gobject2 (>=1.10.0), libcairo2 (>=1.7.2), libgdk-pixbuf2.0-0  (>=2.22.0), libglib2.0-0 (>=2.37.3), libgtk-3-0  (>=3.11.5), libpango-1.0-0 (>=1.14.0), libpangocairo-1.0-0 (>=1.14.0), libssl1.0.0 (>=1.0.0), gdebi (>=0.9.5), policykit-1 (>=0.105)
+Depends: yad (>=0.38), libatk1.0-0 (>=1.12.4), libc6 (>=2.15), libcairo2 (>=1.7.2), libcurl4 (>=7.16.2), libgdk-pixbuf2.0-0  (>=2.22.0), libglib2.0-0 (>=2.39.90), libgtk-3-0 (>=3.21.5), libpango-1.0-0 (>=1.14.0), libssl1.1 (>=1.1.0), pr3287 (>=3.6), gdebi (>=0.9.5), policykit-1 (>=0.105)
 Description: Aporta Instaladores, lanzadores y configuracion de accesos SNA
  Agrega lanzadores para teminales de SNA (SIE y Terminal de Impresion)
  Agrega asistente de configuración para terminales SNA.
@@ -13,9 +13,26 @@ Description: Aporta Instaladores, lanzadores y configuracion de accesos SNA
 <</CTRL>>
 <<FILES>>
 1
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/polkit-1/actions/com.ubuntu.pkexec.yad.policy* -> com.ubuntu.pkexec.yad.policy -> /usr/share/polkit-1/actions
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/desktop-directories/gsf.directory -> gsf.directory -> /usr/share/desktop-directories
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/desktop-directories/gsf-tools.directory -> gsf-tools.directory -> /usr/share/desktop-directories
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/applications/sie.desktop* -> sie.desktop -> /usr/share/applications
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/applications/pr3287.desktop* -> pr3287.desktop -> /usr/share/applications
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share/applications/conf_pr3287.desktop* -> conf_pr3287.desktop -> /usr/share/applications
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/scripts/manejar_pr3287.sh -> manejar_pr3287.sh -> /usr/local/bin/gsf/scripts
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/scripts/lib_sna.sh -> lib_sna.sh -> /usr/local/bin/gsf/scripts
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/scripts/configurar_sna.sh* -> configurar_sna.sh -> /usr/local/bin/gsf/scripts
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/icons/icono-SIE.png -> icono-SIE.png -> /usr/local/bin/gsf/icons
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/icons/icono-Config-SIE.png -> icono-Config-SIE.png -> /usr/local/bin/gsf/icons
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/icons/SF-Icon.png -> SF-Icon.png -> /usr/local/bin/gsf/icons
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/icons/Icono-servicio-tecnico.png -> Icono-servicio-tecnico.png -> /usr/local/bin/gsf/icons
 /home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/etc/xdg/menus/applications-merged/sna.menu -> sna.menu -> /etc/xdg/menus/applications-merged
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local -> local -> /usr/
-/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/share -> share -> /usr/
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb -> lib3270_5.3+git20201024-0+39.1_amd64.deb -> /usr/local/bin/gsf/debs/pw3270
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb -> libv3270_5.3+git20200915-0+311.2_amd64.deb -> /usr/local/bin/gsf/debs/pw3270
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb -> pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb -> /usr/local/bin/gsf/debs/pw3270
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb -> pw3270_5.3+git20200820-0+40.4_amd64.deb -> /usr/local/bin/gsf/debs/pw3270
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/config/SIE.3270* -> SIE.3270 -> /usr/local/bin/gsf/config
+/home/administrador/Escritorio/git/UbuntuGSF3/paquetes3.0/gsf_sna1.1/usr/local/bin/gsf/scripts/ej_como_admin.sh -> ej_como_admin.sh -> /usr/local/bin/gsf/scripts
 <</FILES>>
 <<SCRIPTS>>
 <<PREINST>>

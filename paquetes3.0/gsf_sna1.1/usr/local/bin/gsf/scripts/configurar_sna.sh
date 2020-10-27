@@ -19,10 +19,6 @@ function mostrarYAD(){
  	yad --window-icon=$ICONO --center --width=550 --image=dialog-warning --title="$1" --text="\n $2" --button="$3"  
 }
 
-# ************************* reemplazar claves en archivos - reemplazar $clave $valor $archivo ************
-function reemplazar(){
-	sed -i "s/\($1 *= *\).*/\1$2/" $3
-}
 # ************************* checkear_root() Muestra dialogos de error si no se ejecuta el script como root ******************************
 function checkear_root(){
 	local meid=$(id -u)
@@ -66,7 +62,6 @@ function form_Reporte(){
 checkear_root
 
 clear
-
 cheq_PW3240
 
 conf_SNA
