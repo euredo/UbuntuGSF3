@@ -60,10 +60,10 @@ function form_Reporte(){
 checkear_root
 
 clear
-cheq_PW3240
+
 
 conf_SNA
-
+cheq_PW3240
 form_Reporte
 cambiar_SNA
 mostrarYAD "Operación Realizada" "Los cambios fueron aplicados exitosamente" "gtk-ok"

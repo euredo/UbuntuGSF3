@@ -26,7 +26,7 @@ E: gsf-sna: file-in-usr-local usr/local/bin/gsf/scripts/manejar_pr3287.sh
 E: gsf-sna: malformed-md5sums-control-file Odd text: usr/share/applications/sie.desktop
 E: gsf-sna: md5sums-lists-nonexistent-file b56df1e4c93c437a41ebf6b29a6d3a0d
 E: gsf-sna: no-copyright-file
-W: gsf-sna: desktop-command-not-in-package usr/share/applications/conf_pr3287.desktop pkexec
+W: gsf-sna: desktop-command-not-in-package usr/share/applications/conf_pr3287.desktop bash
 W: gsf-sna: desktop-command-not-in-package usr/share/applications/pr3287.desktop bash
 W: gsf-sna: desktop-command-not-in-package usr/share/applications/sie.desktop pw3270
 W: gsf-sna: executable-not-elf-or-script usr/local/bin/gsf/config/SIE.3270

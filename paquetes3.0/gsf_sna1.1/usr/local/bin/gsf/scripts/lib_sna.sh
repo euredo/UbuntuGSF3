@@ -4,7 +4,7 @@
 # Modificado: 2020-08
 ############################################
 
-INST_PW3270="false"
+
 ARCH3270="/usr/local/bin/gsf/config/SIE.3270"
 MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_pr3287.sh"
 LANZADORPW3270="/usr/share/applications/sie.desktop"
@@ -13,9 +13,12 @@ LU_VIDEO_ORI="XXXXXXXX"
 LU_PRINTER_ORI="XXXXXXXX"
 IP_SNA_ORI="10.1.4.11"
 FORMLU=0
+INST_PW3270="TRUE"
+
 
 # ************************* form_sna() Muestra el Formulario con los parámetros de Terminal Lógica a configurar ***********************************
 function form_sna(){
+
 	RESULTADOS_LU=$(yad --image=$ICONO  --window-icon=$ICONO --image-on-top  \
 			--title="$TITULO_SCRIPT - $VERSION" --width=570  \
 			--text="\n  Configuración de Unidades Lógicas de SNA \n \n <b>Ingrese los campos correspondientes</b>\n \n "  \
@@ -55,8 +58,8 @@ function cheq_PW3240(){
 echo "INST_PW3270: $INST_PW3270"
 INST=$INST_PW3270
 echo "inst: "$INST
-if [[ $INST = "true" ]]; then
-   REP_CADENA="$REP_CADENA     * Se instalaran el/los siguiente/s paquete/s faltante/s:\n$REP_CADENA_Inst        <b>La instalación de dichos paquetes se hace una sola vez y puede demorar unos minutos. SEA PACIENTE</b>\n"
+if [[ $INST = "TRUE" ]]; then
+   REP_CADENA="$REP_CADENA\n \n    * Se instalaran el/los siguiente/s paquete/s faltante/s:\n$REP_CADENA_Inst        <b>La instalación de dichos paquetes se hace una sola vez y puede demorar unos minutos. SEA PACIENTE</b>\n"
 fi
 }
 
@@ -71,19 +74,19 @@ function reemplazar(){
 # ************************* cambiar_SNA() Realiza los cambios ya confirmados ***********************************
 function cambiar_SNA(){
 # si falta algun paquete actualiza los repositorios e instala los paquetes faltantes
-    if [[ $INST = "true" ]];then
+    if [[ $INST = "TRUE" ]];then
       sudo apt update   
       
-        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb"
+        echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb"
         sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb
         
-        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb"
+        echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb"
         sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb
       
-        echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb"
+        echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb"
         sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb
       
-       echo "\n\n gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb"  
+       echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb"  
        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb
        
       
