@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Directory
+Icon[es_AR]=wine
+Name[es_AR]=Entornos Wine GSF
+Comment[es_AR]=Entornos Wine para aplicaciones de la Provincia
+Name=Entornos Wine GSF
+Comment=Menú de Aplicaciones Santa Fe
+

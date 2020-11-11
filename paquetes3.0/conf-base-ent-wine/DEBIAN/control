@@ -1,0 +1,12 @@
+Package: conf-base-ent-wine-gsf
+Version: 1.0
+Installed-Size: 40
+Maintainer: STG <gfiguredo@santafe.gov.ar>
+Section: admin
+Architecture: amd64
+Priority: important
+Depends: wine (>=1.4)
+Description: Configuración basica para implementacion de entornos wine GSF
+ Crea un usuario aplicaciones que, junto con el administrador, serán los únicos habilitados  para ejecutar wine.
+ Cualquier otro usuario deberá ejecutarlo invocando a "aplicaciones"
+

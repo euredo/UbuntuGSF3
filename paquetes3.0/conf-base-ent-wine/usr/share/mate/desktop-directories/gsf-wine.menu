@@ -1,0 +1,65 @@
+<!DOCTYPE Menu
+  PUBLIC '-//freedesktop//DTD Menu 1.0//EN'
+  'http://standards.freedesktop.org/menu-spec/menu-1.0.dtd'>
+<Menu>
+	<Name>Applications</Name>
+	<MergeFile type="parent">/etc/xdg/menus/mate-applications.menu</MergeFile>
+
+	<!-- Primer nivel -->
+	<Menu>	
+		<Name>gsf</Name> 
+		<Directory>gsf.directory</Directory>
+		<!-- Segundo nivel -->
+		<Menu>	
+
+			<Name>gsf-tools</Name>
+			<Directory>gsf-tools.directory</Directory>
+
+			<Menu>	
+
+				<Name>gsf-wine</Name>
+				<Directory>gsf-wine.directory</Directory>
+
+				<!-- Tercer nivel -->
+			</Menu>
+
+		</Menu>
+
+
+		<Layout> 		<!-- Layout menu GSF -->	
+			<Merge type="menus"/>
+			<Menuname>gsf-tools.directory</Menuname>
+			<Menuname>gsf-wine.directory</Menuname> 
+			<Separator/>
+			<Filename>sarh_SARH.desktop</Filename>
+			<Filename>sie.desktop</Filename>
+			<Filename>sipaf_SIPAF.desktop</Filename>
+			<Filename>version.desktop</Filename>
+			<Merge type="files"/>
+		</Layout>
+
+
+
+	</Menu>
+
+	<Layout> 		<!-- Layout menu Aplicaciones -->	
+		<Merge type="menus"/>
+		<Menuname>gsf</Menuname>   <!-- Pongo menu gsf en primer lugar y agrego separador-->
+		<Separator/>
+		<Menuname>Accessories</Menuname>
+		<Menuname>Universal Access</Menuname>
+		<Menuname>Education</Menuname>
+		<Menuname>Graphics</Menuname>
+		<Menuname>System</Menuname>
+		<Menuname>Internet</Menuname>
+		<Menuname>Games</Menuname>
+		<Menuname>Office</Menuname>
+		<Menuname>Other</Menuname>
+		<Menuname>Development</Menuname>
+		<Menuname>Multimedia</Menuname>
+		<Menuname>wine-wine</Menuname>
+		<Merge type="files"/>
+	</Layout>
+
+
+</Menu>
