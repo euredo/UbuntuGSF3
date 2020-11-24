@@ -22,7 +22,7 @@ E: gsf-sna: file-in-usr-local usr/local/bin/gsf/icons/icono-SIE.png
 E: gsf-sna: file-in-usr-local usr/local/bin/gsf/scripts/configurar_sna.sh
 E: gsf-sna: file-in-usr-local usr/local/bin/gsf/scripts/ej_como_admin.sh
 E: gsf-sna: file-in-usr-local usr/local/bin/gsf/scripts/lib_sna.sh
-E: gsf-sna: file-in-usr-local usr/local/bin/gsf/scripts/manejar_pr3287.sh
+E: gsf-sna: file-in-usr-local usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh
 E: gsf-sna: malformed-md5sums-control-file Odd text: usr/share/applications/sie.desktop
 E: gsf-sna: md5sums-lists-nonexistent-file b56df1e4c93c437a41ebf6b29a6d3a0d
 E: gsf-sna: no-copyright-file
@@ -43,7 +43,7 @@ W: gsf-sna: file-in-unusual-dir usr/local/bin/gsf/icons/icono-SIE.png
 W: gsf-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/configurar_sna.sh
 W: gsf-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/ej_como_admin.sh
 W: gsf-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/lib_sna.sh
-W: gsf-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/manejar_pr3287.sh
+W: gsf-sna: file-in-unusual-dir usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh
 W: gsf-sna: file-missing-in-md5sums usr/share/applications/sie.desktop
 W: gsf-sna: maintainer-script-ignores-errors postinst
 W: gsf-sna: maintainer-script-ignores-errors postrm
@@ -68,7 +68,7 @@ W: gsf-sna: non-standard-dir-perm usr/share/polkit-1/ 0775 != 0755
 W: gsf-sna: non-standard-dir-perm usr/share/polkit-1/actions/ 0775 != 0755
 W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/ej_como_admin.sh
 W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/lib_sna.sh
-W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/manejar_pr3287.sh
+W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh
 W: gsf-sna: script-not-executable usr/share/desktop-directories/gsf-tools.directory
 W: gsf-sna: script-not-executable usr/share/desktop-directories/gsf.directory
 W: gsf-sna: unusual-interpreter usr/share/applications/conf_pr3287.desktop #!xdg-open
