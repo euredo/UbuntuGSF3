@@ -3,6 +3,6 @@
 Comment=Sistema de Ingreso de Expedientes
 Terminal=false
 Name=SIE-Terminal de Impresión
-Exec=bash /usr/local/bin/gsf/scripts/manejar_pr3287.sh 
+Exec=bash /usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh 
 Type=Application
 Icon=printer

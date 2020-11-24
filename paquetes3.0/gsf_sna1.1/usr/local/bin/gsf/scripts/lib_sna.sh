@@ -108,9 +108,9 @@ function cambiar_SNA(){
 	    fi
 	fi
 	
-	reemplazar url "tn3270://$IP_SNA:telnet" $ARCH3270 
+	reemplazar url "tn3270:\/\/$IP_SNA:telnet" $ARCH3270 
 	
-	reemplazar Exec "pw3270 $ARCH3270 " $LANZADORPW3270
+#	reemplazar Exec "pw3270 $ARCH3270 " $LANZADORPW3270
 	
 	reemplazar INST_PW3270 "\"false\""  $CONFSNA 
 	
