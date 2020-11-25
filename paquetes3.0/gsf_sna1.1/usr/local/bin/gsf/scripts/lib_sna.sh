@@ -6,7 +6,7 @@
 
 
 ARCH3270="/usr/local/bin/gsf/config/SIE.3270"
-MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_pr3287.sh"
+MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh"
 LANZADORPW3270="/usr/share/applications/sie.desktop"
 CONFSNA="/usr/local/bin/gsf/scripts/lib_sna.sh"
 LU_VIDEO_ORI="XXXXXXXX"
@@ -73,57 +73,104 @@ function reemplazar(){
 
 # ************************* cambiar_SNA() Realiza los cambios ya confirmados ***********************************
 function cambiar_SNA(){
+ii=0
 # si falta algun paquete actualiza los repositorios e instala los paquetes faltantes
     if [[ $INST = "TRUE" ]];then
-      sudo apt update   
-      
-        echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb"
-        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb
-        
-        echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb"
-        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb
-      
-        echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb"
-        sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb
-      
-       echo & echo & echo "gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb"  
-       sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb
-       
-      
+   
+   mostrar[$ii]="Actualizando repositorios"
+   sentencias[$ii]="sudo apt update"   
+   ii=$((ii + 1))
+   mostrar[$ii]="Instalando librería lib3270_5.3"
+   sentencias[$ii]="sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/lib3270_5.3+git20201024-0+39.1_amd64.deb"
+   ii=$((ii + 1))
+   mostrar[$ii]="Instalando librería lilbv3270_5.3"
+   sentencias[$ii]="sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/libv3270_5.3+git20200915-0+311.2_amd64.deb"
+   ii=$((ii + 1))
+   mostrar[$ii]="Instalando pw3270_5.3"
+   sentencias[$ii]="sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270_5.3+git20200820-0+40.4_amd64.deb"
+   ii=$((ii + 1))
+   mostrar[$ii]="Instalando pw3270-keypads_5.3"
+   sentencias[$ii]="sudo  gdebi --n /usr/local/bin/gsf/debs/pw3270/pw3270-keypads_5.3+git20200820-0+40.4_amd64.deb"     
     fi
-    
+    echo "lu video: $LU_VIDEO"
   # Reemplaza las variables en los archivos de configuración.  
-    if [ [ -z $LU_VIDEO] ];
+    if [ $LU_VIDEO == "" ];
     then 
-	    reemplazar lu-names "" $ARCH3270 
+	    ii=$((ii + 1))
+        mostrar[$ii]="Asignar terminal por de video defecto"
+        sentencias[$ii]='reemplazar lu-names "" $ARCH3270 '
 	    LU_VIDEO="XXXXXXXX"
 	else
 	    if [[ $LU_VIDEO = *"XXXX"* ]];
 	    then 
-	      reemplazar lu-names "" $ARCH3270 
-	      LU_VIDEO="XXXXXXXX"
+	      ii=$((ii + 1))
+        mostrar[$ii]="Asignar terminal de video por defecto"
+        sentencias[$ii]='reemplazar lu-names "" $ARCH3270 '
+	    LU_VIDEO="XXXXXXXX"
 	    else
-	      reemplazar lu-names "$LU_VIDEO" $ARCH3270 
+	      ii=$((ii + 1))
+        mostrar[$ii]="Asignar terminal de video: $LU_VIDEO"
+        sentencias[$ii]='reemplazar lu-names "$LU_VIDEO" $ARCH3270 '
 	      
 	    fi
 	fi
 	
-	reemplazar url "tn3270:\/\/$IP_SNA:telnet" $ARCH3270 
+	if [ $LU_PRINTER == "" ];
+    then 
+	    ii=$((ii + 1))
+        mostrar[$ii]="Asignar terminal por de impresión defecto"
+        sentencias[$ii]='reemplazar LU_PRINTER "" $MANEJARPR3287 '
+	    LU_PRINTER="XXXXXXXX"
+	else
+	    if [[ $LU_PRINTER = *"XXXX"* ]];
+	    then 
+	      ii=$((ii + 1))
+        mostrar[$ii]="Asignar terminal de impresión por defecto"
+        sentencias[$ii]='reemplazar LU_PRINTER "" $MANEJARPR3287 '
+	    LU_PRINTER="XXXXXXXX"
+	    else
+	      ii=$((ii + 1))
+        mostrar[$ii]="Asignar terminal de impresión: $LU_PRINTER"
+        sentencias[$ii]='reemplazar LU_PRINTER "$LU_PRINTER" $MANEJARPR3287 '
+	      
+	    fi
+	fi
 	
-#	reemplazar Exec "pw3270 $ARCH3270 " $LANZADORPW3270
+	ii=$((ii + 1))
+        mostrar[$ii]="Asignar Servidor SNA: $IP_SNA"
+        sentencias[$ii]='reemplazar url "tn3270:\/\/$IP_SNA:telnet" $ARCH3270 '
+	ii=$((ii + 1))
+        sentencias[$ii]='reemplazar IP_SNA "\"$IP_SNA\"" $MANEJARPR3287 '
 	
-	reemplazar INST_PW3270 "\"false\""  $CONFSNA 
+	reemplazar INST_PW3270 "\"FALSE\""  $CONFSNA 
 	
-	reemplazar LU_VIDEO_ORI "\"$LU_VIDEO\"" $CONFSNA 
+	reemplazar LU_VIDEO_ORI "\"$LU_VIDEO\"" $CONFSNA
+	reemplazar LU_PRINTER_ORI "\"$LU_PRINTER\"" $CONFSNA
+	reemplazar IP_SNA_ORI "\"$IP_SNA\"" $CONFSNA
 	
-	reemplazar LU_PRINTER_ORI "\"$LU_PRINTER\"" $CONFSNA 
-	
-	reemplazar IP_SNA_ORI "\"$IP_SNA\"" $CONFSNA 
-	
-	reemplazar LU_PRINTER "\"$LU_PRINTER\"" $MANEJARPR3287 
-	
-	reemplazar IP_SNA "\"$IP_SNA\"" $MANEJARPR3287 
-}
+echo "ii= $ii"
+porc=0 
+incr=$((100 / $ii))
+for (( i=1; i<=$ii; i++ )); do
+    echo "#${mostrar[i]}" 
+    eval ${sentencias[i]}
+    porc=$((porc +  incr))
+    echo $porc  
+	sleep 1s 
+done | yad --image=$ICONO  --window-icon=$ICONO --image-on-top  \
+			--title="$TITULO_SCRIPT - $VERSION" --width=570  \
+			--text="\n  Aplicando configuración de Unidades Lógicas de SNA "  \
+			--progress --auto-close \
+ --width=500 --height=300 \
+ --enable-log "Paso actual" \
+ --log-expanded --log-height=250 \
+ --log-on-top --percentage=0 \
+  --center --button="gtk-cancel:1"
+
+ }
+ 
+ 
+ 
 # ************************* conf_SNA() Muestra el reporte de los cambios a realizar ***********************************
 function conf_SNA(){
 
@@ -132,4 +179,3 @@ function conf_SNA(){
      form_sna
   done
 }
-

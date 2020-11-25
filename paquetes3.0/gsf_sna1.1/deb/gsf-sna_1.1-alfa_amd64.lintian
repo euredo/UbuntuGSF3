@@ -66,6 +66,7 @@ W: gsf-sna: non-standard-dir-perm usr/share/applications/ 0775 != 0755
 W: gsf-sna: non-standard-dir-perm usr/share/desktop-directories/ 0775 != 0755
 W: gsf-sna: non-standard-dir-perm usr/share/polkit-1/ 0775 != 0755
 W: gsf-sna: non-standard-dir-perm usr/share/polkit-1/actions/ 0775 != 0755
+W: gsf-sna: possibly-insecure-handling-of-tmp-files-in-maintainer-script postinst:3
 W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/ej_como_admin.sh
 W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/lib_sna.sh
 W: gsf-sna: script-not-executable usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh

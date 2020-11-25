@@ -66,5 +66,5 @@ conf_SNA
 cheq_PW3240
 form_Reporte
 cambiar_SNA
-mostrarYAD "Operación Realizada" "Los cambios fueron aplicados exitosamente" "gtk-ok"
 
+mostrarYAD "Operación Realizada" "Los cambios fueron aplicados exitosamente" "gtk-ok"
