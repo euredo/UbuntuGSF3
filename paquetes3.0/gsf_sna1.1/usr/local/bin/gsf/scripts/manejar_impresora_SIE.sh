@@ -6,13 +6,18 @@
 
 
 VERSION="Ver. 1.1"
-TITULO_SCRIPT="Terminal de impresion pr3287"
+TITULO_SCRIPT="SIE Terminal de impresión"
 ICONO="/usr/local/bin/gsf/icons/SF-Icon.png"
 
-LU_PRINTER="XXXXXXXX"
+LU_PRINTER=ROTPNT04
 IP_SNA="10.1.4.11"
 
 
+
+# ************************* mostrarYAD() Muestra una ventana generica de yad co nel mensaje proporcionado ***********************************
+function mostrarYAD(){ 
+ 	yad --window-icon=$ICONO --center --width=550 --image=dialog-warning --title="$1" --text="\n $2" --button="$3"  
+}
 
 # ************************* Muestra diálogo de confirmación de Error ******************************
 function form_Error(){
@@ -35,7 +40,17 @@ function form_Repo(){
 }
 
 # ************************* main() **************************************
+if [ ! -d "/tmp/pr3287/" ];
+then 
+  mkdir /tmp/pr3287/
+fi
+
+if  [ -z $LU_PRINTER ]; then 
+mostrarYAD "$TITULO_SCRIPT - $VERSION" "No fue definida una terminal de impresión. \n Por favor defínala a travez de la aplicación Configuración SNA" "gtk-ok"
+exit 0
+else
 pr3287 -trace -tracedir /tmp/pr3287/ -daemon -charset cp284  $LU_PRINTER@$IP_SNA
+fi
 
 pid=$(ps -ef | grep pr3287 | grep -v "grep" | grep -v "pluma"| grep -v "yad" | awk '{print $2}')
 if [ $pid > 0 ]; 

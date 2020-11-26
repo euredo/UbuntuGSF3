@@ -7,7 +7,7 @@
 
 
 source /usr/local/bin/gsf/scripts/lib_sna.sh 
-VERSION="Ver. 1.0"
+VERSION="Ver. 1.1 "
 TITULO_SCRIPT="Configuración SNA"
 ICONO="/usr/local/bin/gsf/icons/SF-Icon.png"
 

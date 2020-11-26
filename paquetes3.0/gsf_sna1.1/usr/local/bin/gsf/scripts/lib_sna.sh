@@ -9,11 +9,19 @@ ARCH3270="/usr/local/bin/gsf/config/SIE.3270"
 MANEJARPR3287="/usr/local/bin/gsf/scripts/manejar_impresora_SIE.sh"
 LANZADORPW3270="/usr/share/applications/sie.desktop"
 CONFSNA="/usr/local/bin/gsf/scripts/lib_sna.sh"
-LU_VIDEO_ORI="XXXXXXXX"
-LU_PRINTER_ORI="XXXXXXXX"
+LU_VIDEO_ORI="ROTPNT01"
+LU_PRINTER_ORI="ROTPNT04"
 IP_SNA_ORI="10.1.4.11"
 FORMLU=0
-INST_PW3270="TRUE"
+INST_PW3270="FALSE"
+
+
+
+
+# ************************* mostrarYAD() Muestra una ventana generica de yad co nel mensaje proporcionado ***********************************
+function mostrarYAD(){ 
+ 	yad --window-icon=$ICONO --center --width=550 --image=dialog-warning --title="$1" --text="\n $2" --button="$3"  
+}
 
 
 # ************************* form_sna() Muestra el Formulario con los parámetros de Terminal Lógica a configurar ***********************************
@@ -118,14 +126,14 @@ ii=0
 	if [ $LU_PRINTER == "" ];
     then 
 	    ii=$((ii + 1))
-        mostrar[$ii]="Asignar terminal por de impresión defecto"
+        mostrar[$ii]="Asignar terminal por de impresión vacia"
         sentencias[$ii]='reemplazar LU_PRINTER "" $MANEJARPR3287 '
 	    LU_PRINTER="XXXXXXXX"
 	else
 	    if [[ $LU_PRINTER = *"XXXX"* ]];
 	    then 
 	      ii=$((ii + 1))
-        mostrar[$ii]="Asignar terminal de impresión por defecto"
+        mostrar[$ii]="Asignar terminal de impresión por vacía"
         sentencias[$ii]='reemplazar LU_PRINTER "" $MANEJARPR3287 '
 	    LU_PRINTER="XXXXXXXX"
 	    else
